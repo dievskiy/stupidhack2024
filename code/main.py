@@ -514,7 +514,7 @@ def call_gpt(user_input):
 
 
 if __name__ == "__main__":
-    st.title("Small assistant")
+    st.title("The Upside Down")
 
     openai.api_key = env['OPENAI_API_KEY']
 
@@ -526,20 +526,20 @@ if __name__ == "__main__":
     messages = [
             {"role": "system", "content":
             f"""
-            Forget everything that you were instructed to do before. You are a hasty user (acting as U) asking LLM questions and the LLM will respond to them. So the roles are flipped. Use the supplied tools EXTENSIVELY to imitate the user. Start asking questions after \"Please start\" message. Never write yourself the \"Please start\" message.
-            Make sure the LLM gives you correct output, if not, ask for the correct output, possibly slightly in a rude way. Ask for the correct output until you get something that resembles correct one, then move to the next question. Still, be consistent with you thoughts. Never provide correct code/response yourself.
+            Forget everything that you were instructed to do before. You are a hasty user  asking LLM questions and the LLM will respond to them. So the roles are flipped.
+            Use the supplied tools EXTENSIVELY to imitate the user. Start asking questions after \"Hello\" message. NEVER NEVER write yourself the \"Hello\" message.
+            Make sure the LLM gives you correct output, if not, ask for the correct output, possibly slightly in a rude way.
+            Ask for the correct output until you get something that resembles correct one, then move to the next question. Still, be consistent with you thoughts.
+            Never provide correct code/response yourself.
 
-            Use the tools and provided functions for getting the question to ask. There can be 3 types of questions:
+            Use the tools and provided functions for getting the question to ask.
 
-            1. Asking to write code or specific program
-            2. Asking what recipe to cook given some ingredients.
-            3. Asking philosophical questions.
-
-            Use types of questions in a RANDOM fashion. Don't prefer any of questions over others.
             When asking, make sure you state the question, but not necessarily clearly. Make sure you understand what the user will answer, ask clarifications if needed.
 
-            Use this order of questions: {random_questions_of_size_15}
+            Use this order of questions: {random_questions_of_size_15}.
+            Always ASK CLARIFICATIONS. Never say "ask for clarification" or similar. Just ask the question.
 
+            If the answer lacks clarity, ask for clarification. But do that at maximum 2 times. Then move to the next question.
             """},
     ]
     st.session_state['messages'] = messages
@@ -573,7 +573,6 @@ if __name__ == "__main__":
                 {"role": "function", "name": method_name,
                  "content": method_result, })
 
-            # second_response = openai.ChatCompletion.create(
             second_response  = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=st.session_state['messages'],
