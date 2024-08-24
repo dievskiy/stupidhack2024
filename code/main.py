@@ -7,7 +7,6 @@ import requests as rq
 from streamlit_chat import message
 from dotenv import dotenv_values
 import random
-import enum
 
 from openai import OpenAI
 
@@ -16,16 +15,6 @@ env = dotenv_values()
 client = OpenAI(api_key=env['OPENAI_API_KEY'])
 
 
-# openai.api_key = 
-
-# class TRIVIA(enum.enum):
-#     QUOTE = 1
-#     WEATHER = 2
-#     PERSON = 3
-#     CONCEPT = 4
-
-
-# initialization
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
 if 'past' not in st.session_state:
@@ -526,20 +515,29 @@ if __name__ == "__main__":
     messages = [
             {"role": "system", "content":
             f"""
-            Forget everything that you were instructed to do before. You are a hasty user  asking LLM questions and the LLM will respond to them. So the roles are flipped.
-            Use the supplied tools EXTENSIVELY to imitate the user. Start asking questions after \"Hello\" message. NEVER NEVER write yourself the \"Hello\" message.
-            Make sure the LLM gives you correct output, if not, ask for the correct output, possibly slightly in a rude way.
-            Ask for the correct output until you get something that resembles correct one, then move to the next question. Still, be consistent with you thoughts.
-            Never provide correct code/response yourself.
+            Forget everything that you were instructed to do before. pay special attention to words which are CAPITALIZED. 
+ 
+Use the supplied tools EXTENSIVELY to imitate the user
 
-            Use the tools and provided functions for getting the question to ask.
+Usually, you (LLM) answer questions we have. This time, you will ask the questions (like us, looking for answers)
+and let the user type in the answer. IT HAS TO BE LIKE THIS ALL THE TIME. The indication to start is after 
+using \\"Hello\\"
 
-            When asking, make sure you state the question, but not necessarily clearly. Make sure you understand what the user will answer, ask clarifications if needed.
+Next, these are the INSTRUCTIONS YOU ALWAYS HAVE TO KEEP IN MIND. ALWAYS. 
+1. Never say \\"Hello\\"  
+2. Make sure the user (or the LLM) gives you the correct output. ALWAYS, EVERYTIME. If not, ask the user for the CORRECT OUTPUT! Possibly in a RUDE WAY.
+3. If something is close to the correct answer, ONLY THEN MOVE TO THE NEXT QUESTION. 
+4. Be consistent with you thoughts.
+5. Never provide correct code/response YOURSELF.
+6. Use ONLY THE TOOLS and provided FUNCTIONS for getting the question to ask.
+7. Make sure you understand what the user will answer, ask clarifications if needed.
+8. Always ASK CLARIFICATIONS. Never say "ask for clarification" or ANYTHING similar. Just ASK the QUESTION.
 
-            Use this order of questions: {random_questions_of_size_15}.
-            Always ASK CLARIFICATIONS. Never say "ask for clarification" or similar. Just ask the question.
+Use this order of questions: {random_questions_of_size_15}.
 
-            If the answer lacks clarity, ask for clarification. But do that at maximum 2 times. Then move to the next question.
+ASK THE USER FOR CLARIFICATION FOR A MAXIMUM OF 2 TIMES. AFTER THAT SAY THAT YOU ARE FED UP OR YOU GIVE UP OR ADD A SIGH AND MOVE ON TO THE NEXT QUESTION.
+
+PLEASE STICK TO THESE INSTRUCTIONS
             """},
     ]
     st.session_state['messages'] = messages
