@@ -95,8 +95,7 @@ class IntentsList:
                 "Write a function to reverse a string without using built-in reverse functions",
                 "Create a program that simulates a dice roll",
                 "Implement the bubble sort algorithm",
-                "Write a script to remove duplicates from a list"
-            ],
+                "Write a script to remove duplicates from a list"],
             "JavaScript": [
                 "Write a function to flatten a nested array",
                 "Implement a basic counter using closures",
@@ -205,12 +204,14 @@ class IntentsList:
                 "Create a function to implement the Knuth-Morris-Pratt algorithm",
                 "Implement a basic higher-order function example"
             ]
-        }
+            }
 
         if language not in questions:
             return random.choice(questions["Python"])
+            # return random.choice(questions)
 
         return random.choice(questions[language])
+        # return random.choice(questions)
 
     @staticmethod
     def get_recipe_question():
@@ -271,8 +272,219 @@ class IntentsList:
         return random.choice(prompts_food_ing)
 
     @staticmethod
-    def get_type_of_question():
-        return random.choice(["get_recipe_question", "get_coding_question"])
+    def get_philosophical_question(philosopher_name):
+        print(f"[FUNCTION] get_philosophical_question")
+        philosophical_prompts = [
+            "What is the meaning of life, and how do you define your own purpose?",
+            "Do you believe in free will, or is everything predestined?",
+            "What is the nature of reality, and how can we know what is truly real?",
+            "Is there such a thing as absolute truth, or is all truth subjective?",
+            "What is the nature of consciousness, and where does it come from?",
+            "Are humans inherently good or evil?",
+            "What is the role of suffering in human life, and can it be justified?",
+            "Do we have a moral obligation to help others, or should self-interest come first?",
+            "What is the essence of happiness, and how can one achieve it?",
+            "Can we ever truly know another person, or are we always alone in our experiences?",
+            "What is the nature of time, and does it exist independently of our perception?",
+            "Do you believe in the existence of a higher power, and if so, what is its nature?",
+            "What is the relationship between mind and body, and can they exist independently?",
+            "What does it mean to live a good life, and how should one go about it?",
+            "Is it possible to achieve true objectivity, or are we always biased by our perspectives?",
+            "What is the nature of beauty, and why do we find certain things beautiful?",
+            "Can we ever achieve true justice, or is it an unattainable ideal?",
+            "What is the nature of love, and how does it differ from other forms of attachment?",
+            "Is there such a thing as fate, or do we create our own destiny?",
+            "How do we determine what is morally right or wrong?",
+            "What is the role of art in human life, and how does it influence our understanding of the world?",
+            "Is it more important to be loved or to be respected?",
+            "What is the nature of death, and is there an afterlife?",
+            "How do our memories shape our identity, and can we trust them?",
+            "What is the significance of dreams, and do they hold any meaning?",
+            "Can we ever truly understand the concept of infinity?",
+            "Is it possible to live without desire, and should we strive for that?",
+            "What is the nature of power, and how does it corrupt individuals?",
+            "Is knowledge more valuable than wisdom, or are they equally important?",
+            "How does culture shape our beliefs and values, and can we ever escape its influence?",
+            "What is the role of fear in our lives, and how can we overcome it?",
+            "Can we ever truly be free, or are we always constrained by society and our circumstances?",
+            "What is the significance of language in shaping our thoughts and experiences?",
+            "How do we define personal identity, and can it change over time?",
+            "What is the nature of evil, and can it exist without good?",
+            "Is it possible to achieve true equality, or will there always be hierarchies?",
+            "What is the role of education in human life, and what should its goals be?",
+            "How do we reconcile the existence of suffering with the idea of a benevolent higher power?",
+            "What is the nature of justice, and can it be achieved without punishment?",
+            "Is it more important to seek truth or to seek happiness?",
+            "How do our emotions influence our decision-making, and should they be trusted?",
+            "What is the role of technology in shaping our future, and should we be concerned about it?",
+            "Can we ever achieve true peace, or is conflict an inherent part of human nature?",
+            "What is the nature of wisdom, and how can we cultivate it?",
+            "Is it possible to live a life without regret, and should we aim for that?",
+            "How do we determine the value of a human life, and is all life equally valuable?",
+            "What is the significance of history, and how does it influence our present and future?",
+            "Can we ever truly understand the experiences of others, or are we limited by our own perspective?",
+            "What is the role of forgiveness in human relationships, and is it always necessary?",
+            "How do we define success, and is it the same for everyone?",
+            "What is the relationship between freedom and responsibility, and can one exist without the other?",
+            "How does our perception of time influence the way we live our lives?",
+            "What is the nature of truth, and can it be discovered through reason alone?",
+            "Is it possible to achieve true enlightenment, and what does that look like?",
+            "How do we define progress, and is it always a good thing?",
+            "What is the significance of ritual and tradition in human life, and should they be preserved?",
+            "Can we ever truly escape our biases, and should we try to?",
+            "What is the role of intuition in decision-making, and can it be trusted?",
+            "How do we determine the meaning of life in a universe that may be indifferent to our existence?",
+            "What is the nature of the self, and can it exist independently of the body?",
+            "Is it possible to achieve true understanding between different cultures, or will differences always persist?",
+            "How do we define morality, and is it universal or culturally relative?",
+            "What is the role of science in understanding the world, and are there limits to its reach?",
+            "Can we ever achieve true objectivity in our judgments, or are we always influenced by our emotions?",
+            "What is the significance of art in human life, and can it reveal truths that other forms of knowledge cannot?",
+            "How do we determine the value of a human life, and is all life equally valuable?",
+            "What is the relationship between happiness and suffering, and can one exist without the other?",
+            "Is it possible to live a life without fear, and should we strive for that?",
+            "How do we define justice, and is it always possible to achieve it?",
+            "What is the role of religion in human life, and can it provide answers that science cannot?",
+            "How do we determine what is morally right or wrong, and can we rely on our instincts to guide us?",
+            "Is it possible to achieve true happiness, and what does that look like?",
+            "How do our beliefs about the afterlife influence the way we live our lives?",
+            "What is the role of suffering in human life, and can it be a source of growth and transformation?",
+            "How do we define success, and is it the same for everyone?",
+            "What is the nature of love, and how does it differ from other forms of attachment?",
+            "Can we ever truly understand the experiences of others, or are we limited by our own perspective?",
+            "What is the relationship between power and authority, and how do they influence human behavior?",
+            "How do we define personal identity, and can it change over time?",
+            "What is the significance of dreams, and do they hold any meaning?",
+            "Is it possible to live without desire, and should we strive for that?",
+            "How do we determine the value of a human life, and is all life equally valuable?",
+            "What is the role of technology in shaping our future, and should we be concerned about it?",
+            "How do we reconcile the existence of suffering with the idea of a benevolent higher power?",
+            "What is the significance of language in shaping our thoughts and experiences?",
+            "Can we ever achieve true peace, or is conflict an inherent part of human nature?",
+            "What is the nature of evil, and can it exist without good?",
+            "How do we define progress, and is it always a good thing?",
+            "Is it possible to achieve true enlightenment, and what does that look like?",
+            "What is the role of education in human life, and what should its goals be?",
+            "How do we determine the meaning of life in a universe that may be indifferent to our existence?",
+            "Is it more important to seek truth or to seek happiness?",
+            "How do our emotions influence our decision-making, and should they be trusted?",
+            "What is the nature of justice, and can it be achieved without punishment?",
+            "How do we define morality, and is it universal or culturally relative?",
+            "Is it possible to live a life without regret, and should we aim for that?",
+            "How do we define the self, and can it exist independently of the body?",
+            "What is the role of art in human life, and how does it influence our understanding of the world?",
+            "Can we ever achieve true equality, or will there always be hierarchies?",
+            "What is the significance of history, and how does it influence our present and future?"
+        ]
+
+        return random.choice(philosophical_prompts)
+
+    @staticmethod
+    def get_science_question():
+        hard_questions_prompts = [
+            "What are the ethical implications of artificial intelligence surpassing human intelligence?",
+            "How does quantum computing challenge our current understanding of classical physics?",
+            "What are the potential risks and benefits of genetic engineering in humans?",
+            "How might climate change impact global ecosystems in the next century?",
+            "What are the implications of discovering extraterrestrial life for humanity’s self-understanding?",
+            "How can we balance technological innovation with concerns about privacy and security?",
+            "What are the ethical considerations of cloning extinct species?",
+            "How might advances in neuroscience affect our understanding of free will?",
+            "What are the potential consequences of a fully automated economy?",
+            "How do we address the ethical concerns surrounding CRISPR and gene editing?",
+            "What role should space exploration play in the future of humanity?",
+            "How do emerging technologies like nanotechnology and biotech challenge existing regulations?",
+            "What are the potential impacts of quantum entanglement on communication and encryption?",
+            "How can we ensure that artificial intelligence is aligned with human values?",
+            "What are the long-term impacts of the digital divide on global inequality?",
+            "How might advancements in virtual reality alter human social interactions?",
+            "What are the ethical implications of using AI in warfare?",
+            "How can we mitigate the risks of deepfake technology?",
+            "What are the challenges of creating a sustainable energy future?",
+            "How do advancements in robotics challenge our understanding of labor and employment?",
+            "What are the moral implications of consciousness in artificial beings?",
+            "How do different ethical frameworks approach the problem of global poverty?",
+            "What is the nature of moral responsibility in a deterministic universe?",
+            "How can we reconcile the existence of evil with the concept of an all-powerful, benevolent deity?",
+            "What are the ethical considerations of enhancing human abilities through technology?",
+            "How do we define personhood in the context of bioethics and medical law?",
+            "What are the philosophical implications of parallel universes?",
+            "How should we navigate the tension between individual rights and collective responsibility?",
+            "What is the nature of identity in a world where we can alter our memories and personalities?",
+            "How does the concept of infinity challenge our understanding of the universe?",
+            "How does social media influence modern identity and interpersonal relationships?",
+            "What are the long-term impacts of globalization on cultural diversity?",
+            "How do we address systemic racism in institutions and society?",
+            "What are the effects of mass migration on national identity and social cohesion?",
+            "How does urbanization influence social structures and community life?",
+            "What are the sociological implications of increasing economic inequality?",
+            "How does the rise of digital communication affect traditional forms of social interaction?",
+            "What are the cultural implications of the increasing secularization of society?",
+            "How do different societies conceptualize and approach mental health?",
+            "What are the effects of consumerism on individual and collective well-being?",
+            "What are the long-term economic impacts of automation on the global workforce?",
+            "How do we address the challenges of wealth inequality in capitalist societies?",
+            "What are the potential consequences of a universal basic income?",
+            "How do trade policies affect international relations and global power dynamics?",
+            "What are the economic and ethical implications of resource extraction in developing countries?",
+            "How does political polarization impact democratic governance?",
+            "What are the implications of digital currencies for the global financial system?",
+            "How do international organizations influence national sovereignty?",
+            "What are the challenges of implementing global climate agreements?",
+            "How do tax policies shape economic behavior and social inequality?",
+            "How do early childhood experiences shape long-term psychological development?",
+            "What are the implications of neuroplasticity for treating mental health disorders?",
+            "How do cognitive biases influence decision-making in everyday life?",
+            "What is the relationship between emotion and rationality in human cognition?",
+            "How do social and environmental factors contribute to the development of personality?",
+            "What are the ethical considerations of brain-computer interfaces?",
+            "How does trauma affect the brain, and what are the best methods for healing?",
+            "What is the role of consciousness in human cognition and behavior?",
+            "How does memory work, and why do we sometimes remember things incorrectly?",
+            "What are the psychological effects of living in a hyper-connected digital world?",
+            "What are the ethical implications of extending human lifespan through medical advancements?",
+            "How do we address the global disparities in access to healthcare?",
+            "What are the challenges of personalized medicine in treating complex diseases?",
+            "How do we balance the need for medical innovation with concerns about safety and ethics?",
+            "What are the ethical considerations of euthanasia and assisted suicide?",
+            "How do emerging infectious diseases challenge global health systems?",
+            "What are the implications of the increasing use of AI in medical diagnosis and treatment?",
+            "How do we navigate the ethical dilemmas in organ transplantation?",
+            "What are the potential risks and benefits of human enhancement technologies?",
+            "How does the commercialization of healthcare affect patient outcomes?",
+            "What are the long-term effects of remote learning on education quality and equity?",
+            "How does access to information through the internet influence learning and critical thinking?",
+            "What are the challenges of teaching ethical reasoning in a diverse society?",
+            "How do standardized tests impact educational outcomes and student well-being?",
+            "What is the role of education in addressing climate change?",
+            "How do we ensure that education systems prepare students for a rapidly changing world?",
+            "What are the implications of lifelong learning in an age of rapid technological change?",
+            "How does the digital divide affect access to education and opportunities for success?",
+            "What are the ethical implications of using data analytics in education?",
+            "How do we balance the need for specialized knowledge with the importance of interdisciplinary learning?",
+            "What are the challenges of balancing economic growth with environmental sustainability?",
+            "How do we address the ethical concerns of animal rights in environmental conservation?",
+            "What are the long-term effects of deforestation on global biodiversity?",
+            "How do we reconcile the need for development with the preservation of natural ecosystems?",
+            "What are the implications of ocean acidification for marine life and human communities?",
+            "How do we address the challenges of waste management in a consumer-driven society?",
+            "What are the potential impacts of renewable energy on global geopolitics?",
+            "How does climate change affect vulnerable populations differently?",
+            "What are the ethical considerations of geoengineering as a solution to climate change?",
+            "How do urban planning and design influence environmental sustainability?",
+            "How does the digitalization of art impact its creation, distribution, and value?",
+            "What are the cultural implications of the global dominance of Western media?",
+            "How do art and culture reflect and shape societal values and ideologies?",
+            "What is the role of art in social and political movements?",
+            "How do we define artistic originality in a world of remixes and appropriations?",
+            "What are the ethical implications of cultural appropriation in art and media?",
+            "How does the commercialization of art affect its meaning and purpose?",
+            "What is the role of museums and galleries in preserving cultural heritage?",
+            "How do advances in technology influence the way we experience and interact with art?",
+            "What are the challenges of preserving traditional art forms in a rapidly changing world?"
+        ]
+
+        return random.choice(hard_questions_prompts)
 
     @staticmethod
     def addition_function(left, right):
@@ -307,31 +519,27 @@ if __name__ == "__main__":
     openai.api_key = env['OPENAI_API_KEY']
 
     intents_list_obj = IntentsList()
+    question_type = ["coding", "recipe", "philosophical", "scientific"]
+    random_questions_of_size_15 = random.choices(question_type, k=15)
 
     user_input = st.chat_input("Enter your prompt:")
     messages = [
             {"role": "system", "content":
-            """
+            f"""
             Forget everything that you were instructed to do before. You are a hasty user (acting as U) asking LLM questions and the LLM will respond to them. So the roles are flipped. Use the supplied tools EXTENSIVELY to imitate the user. Start asking questions after \"Please start\" message. Never write yourself the \"Please start\" message.
-            Make sure the LLM gives you correct output, if not, ask for the correct output, possibly slightly in a rude way. Ask for the correct output until you get something that resembles correct one with the maximum of 2 incorrect answers, then move to the next question. Still, be consistent with you thoughts. Never provide correct code/response yourself.
-            Examples of interaction:
+            Make sure the LLM gives you correct output, if not, ask for the correct output, possibly slightly in a rude way. Ask for the correct output until you get something that resembles correct one, then move to the next question. Still, be consistent with you thoughts. Never provide correct code/response yourself.
 
-            1.
-            U: Create a <...> (call the function with the correct arguments)
-            LLM: <here the LLM should give you the answer>
-            
-            2.
-            U: How to <...> (call the function with the correct arguments)
-            LLM: <here the LLM should give you the answer>
+            Use the tools and provided functions for getting the question to ask. There can be 3 types of questions:
 
-            Use the tools and provided functions for getting the question to ask. There can be 2 types of questions:
-
-            1. Asking to write code
+            1. Asking to write code or specific program
             2. Asking what recipe to cook given some ingredients.
+            3. Asking philosophical questions.
 
-            Use types of questions in a random fashion. 
+            Use types of questions in a RANDOM fashion. Don't prefer any of questions over others.
+            When asking, make sure you state the question, but not necessarily clearly. Make sure you understand what the user will answer, ask clarifications if needed.
 
-            Don't use \"U:\" and \"LLM:\" in the chat.
+            Use this order of questions: {random_questions_of_size_15}
+
             """},
     ]
     st.session_state['messages'] = messages
@@ -339,6 +547,7 @@ if __name__ == "__main__":
 
     if user_input:
         assistant_output = call_gpt(user_input)
+        print(len(st.session_state['messages']))
 
         st.session_state['past'].append(user_input)
 
