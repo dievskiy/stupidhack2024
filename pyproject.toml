@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "code"
+version = "0.1.0"
+description = ""
+authors = ["dievskiy <potekhin.ruslan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+openai = "^1.42.0"
+requests = "^2.26.0"
+streamlit_chat = "^0.1.1"
+python-dotenv = "^0.19.2"
+streamlit = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
